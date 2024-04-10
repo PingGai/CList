@@ -13,7 +13,7 @@ This mod includes:
 - Detecting coordinates from chat.
 - No minimap.
 
-(If you want to help and know any other language than English you can help by translating the mod [here](https://github.com/PouekDEV/CList/tree/1.20.2/src/main/resources/assets/coordinatelist/lang) by making a pull request)
+(If you want to help and know any other language than English you can help by translating the mod [here](https://github.com/PouekDEV/CList) by making a pull request)
 
 I initially created this mod just for me and my friends, but I thought somebody would find it helpful. I'm not too fond of these waypoint mods which always have built-in minimap which lagged my game even when it was off. So I made my own mod to fulfill the need for a lightweight, minimalistic waypoint mod.
 
