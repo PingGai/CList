@@ -7,4 +7,5 @@ public class CListConfig extends MidnightConfig {
     @Entry(min=0) public static int render_distance = 0;
     @Entry public static boolean waypoints_toggled = true;
     @Entry public static boolean can_place_deathpoints = true;
+    @Entry public static boolean waypoint_text_background = true;
 }

@@ -1,5 +1,6 @@
 package one.pouekdev.coordinatelist;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -7,10 +8,12 @@ import net.minecraft.client.gui.widget.GridWidget;
 import net.minecraft.client.gui.widget.SimplePositioningWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 
 public class CListWaypointConfig extends Screen {
     public int id;
+    public boolean render_color_picker = false;
     public CListWaypoint waypoint;
     public TextFieldWidget waypoint_name;
     public TextFieldWidget waypoint_color;
@@ -58,6 +61,24 @@ public class CListWaypointConfig extends Screen {
         addDrawableChild(this.y);
         addDrawableChild(this.z);
     }
+    public static class SpriteButton extends ButtonWidget {
+        public int x_pos;
+        public int y_pos;
+        public SpriteButton(int x, int y, int width, int height, PressAction onPress) {
+            super(x, y, width, height, Text.literal(""), onPress,null);
+            this.x_pos = x;
+            this.y_pos = y;
+        }
+        @Override
+        public void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
+            Identifier icon;
+            icon = new Identifier("coordinatelist", "icon/change");
+            RenderSystem.enableBlend();
+            RenderSystem.defaultBlendFunc();
+            context.drawGuiTexture(icon, x_pos, y_pos, width, height);
+            RenderSystem.disableBlend();
+        }
+    }
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         this.waypoint_name.setX((this.width-150)/2);
@@ -77,8 +98,12 @@ public class CListWaypointConfig extends Screen {
         int top = centerY - SQUARE_SIZE / 2;
         int right = centerX + SQUARE_SIZE / 2;
         int bottom = centerY + SQUARE_SIZE / 2;
+        //SpriteButton change_color = new SpriteButton((this.width-50)/2+38,(this.height-20)/2-15,12,12,button -> {
+        //    render_color_picker = !render_color_picker;
+        //});
         super.render(context, mouseX, mouseY, delta);
         context.fill(left, top, right, bottom, CListClient.variables.colors.get(id).rgbToHex());
+        //change_color.renderWidget(context,mouseX,mouseY,delta);
     }
     @Override
     public boolean charTyped(char chr, int keyCode) {

@@ -1,6 +1,7 @@
 package one.pouekdev.coordinatelist.mixin;
 
 import net.minecraft.client.gui.hud.ChatHud;
+import net.minecraft.client.gui.hud.ChatHudLine;
 import net.minecraft.client.gui.hud.MessageIndicator;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.Text;
@@ -21,11 +22,11 @@ import java.util.List;
 @Mixin(ChatHud.class)
 public abstract class CListChatGrabber {
     @Inject(method = "logChatMessage", at = @At("RETURN"))
-    private void getCoordsFromChat(Text message, @Nullable MessageIndicator indicator, CallbackInfo ci) {
+    private void getCoordsFromChat(ChatHudLine message, CallbackInfo ci) {
         List<String> numbersList = Lists.newArrayList();
         String player;
         try{
-            String content = message.getString().replaceAll("\r", "\\\\r").replaceAll("\n", "\\\\n");
+            String content = message.content().getString().replaceAll("\r", "\\\\r").replaceAll("\n", "\\\\n");
             player = StringUtils.substringBetween(content, "<", ">");
             content = content.replace("<","").replace(">","").replace(player,"");
             numbersList = CListClient.findNumbersInString(content);

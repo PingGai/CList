@@ -56,10 +56,6 @@ public class CListWaypointScreen extends Screen {
         gridWidgetBottom.forEachChild(this::addDrawableChild);
     }
     @Override
-    public void renderBackground(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackgroundTexture(context);
-    }
-    @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
         //list.render(context, mouseX, mouseY, delta);

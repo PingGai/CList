@@ -31,11 +31,11 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.14.22",
+    "fabricloader": ">=0.15.10",
     "fabric-api": "*",
-    "minecraft": ">=1.20.3-",
-    "java": ">=17",
-    "midnightlib": ">=1.5.3"
+    "minecraft": ">=1.20.5-",
+    "java": ">=21",
+    "midnightlib": ">=1.5.4"
   },
 
   "suggests": {
