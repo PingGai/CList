@@ -105,38 +105,31 @@ public class CListWaypointConfig extends Screen {
         context.fill(left, top, right, bottom, CListClient.variables.colors.get(id).rgbToHex());
         //change_color.renderWidget(context,mouseX,mouseY,delta);
     }
+    public static boolean isParsableToInt(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
     @Override
     public boolean charTyped(char chr, int keyCode) {
         boolean result = super.charTyped(chr, keyCode);
         if(this.waypoint_name.isFocused()){
-            try{
-                waypoint.setName(waypoint_name.getText());
-            }
-            catch(IndexOutOfBoundsException ignored){}
+            waypoint.setName(waypoint_name.getText());
         }
         if(this.waypoint_color.isFocused()){
-            try{
-                CListClient.variables.colors.get(id).hexToRGB(waypoint_color.getText());
-            }
-            catch(IndexOutOfBoundsException ignored){}
+            CListClient.variables.colors.get(id).hexToRGB(waypoint_color.getText());
         }
-        if(this.x.isFocused()){
-            try{
-                waypoint.x = Integer.parseInt(x.getText());
-            }
-            catch(IndexOutOfBoundsException ignored){}
+        if(this.x.isFocused() && isParsableToInt(x.getText())){
+            waypoint.x = Integer.parseInt(x.getText());
         }
-        if(this.y.isFocused()){
-            try{
-                waypoint.y = Integer.parseInt(y.getText());
-            }
-            catch(IndexOutOfBoundsException ignored){}
+        if(this.y.isFocused() && isParsableToInt(y.getText())){
+            waypoint.y = Integer.parseInt(y.getText());
         }
-        if(this.z.isFocused()){
-            try{
-                waypoint.z = Integer.parseInt(z.getText());
-            }
-            catch(IndexOutOfBoundsException ignored){}
+        if(this.z.isFocused() && isParsableToInt(z.getText())){
+            waypoint.z = Integer.parseInt(z.getText());
         }
         CListClient.variables.saved_since_last_update = false;
         return true;
@@ -151,13 +144,13 @@ public class CListWaypointConfig extends Screen {
             if(this.waypoint_color.isFocused()){
                 CListClient.variables.colors.get(id).hexToRGB(waypoint_color.getText());
             }
-            if(this.x.isFocused()){
+            if(this.x.isFocused() && isParsableToInt(x.getText())){
                 waypoint.x = Integer.parseInt(x.getText());
             }
-            if(this.y.isFocused()){
+            if(this.y.isFocused() && isParsableToInt(y.getText())){
                 waypoint.y = Integer.parseInt(y.getText());
             }
-            if(this.z.isFocused()){
+            if(this.z.isFocused() && isParsableToInt(z.getText())){
                 waypoint.z = Integer.parseInt(z.getText());
             }
             CListClient.variables.saved_since_last_update = false;
@@ -169,13 +162,13 @@ public class CListWaypointConfig extends Screen {
             if(this.waypoint_color.isFocused()){
                 CListClient.variables.colors.get(id).hexToRGB(waypoint_color.getText());
             }
-            if(this.x.isFocused()){
+            if(this.x.isFocused() && isParsableToInt(x.getText())){
                 waypoint.x = Integer.parseInt(x.getText());
             }
-            if(this.y.isFocused()){
+            if(this.y.isFocused() && isParsableToInt(y.getText())){
                 waypoint.y = Integer.parseInt(y.getText());
             }
-            if(this.z.isFocused()){
+            if(this.z.isFocused() && isParsableToInt(z.getText())){
                 waypoint.z = Integer.parseInt(z.getText());
             }
             CListClient.variables.saved_since_last_update = false;
